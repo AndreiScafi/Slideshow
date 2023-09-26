@@ -1,5 +1,11 @@
 let current = 1;
 
+let playPauseBool = true;
+
+let interval;
+
+const playButton = document.querySelector('.play-pause');
+
 const changeSlides = () => {
     const slideList = document.querySelectorAll('.slide');
 
@@ -19,11 +25,22 @@ const changeSlides = () => {
 };
 
 const playPause = () => {
-    setInterval(() => {
-        current++;
-        changeSlides();
-    }, 3000)
+    if (playPauseBool) {
+        interval = setInterval(() => {
+            current++;
+            changeSlides();
+        }, 3000);
+
+        playPauseBool = false;
+
+    } else {
+        clearInterval(interval);
+        playPauseBool = true;
+    }
 }
 
+playButton.addEventListener('click', () => {
+    playPause();
+})
+
 changeSlides();
-playPause(); 
