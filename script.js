@@ -37,10 +37,27 @@ const playPause = () => {
         clearInterval(interval);
         playPauseBool = true;
     }
+
+    changePlayPause();
+}
+
+const changePlayPause = () => {
+    const icon = document.querySelector('.play-pause i');
+
+    const cls = icon.classList[1];
+
+    if (cls === 'fa-play') {
+        icon.classList.remove('fa-play');
+        icon.classList.add('fa-pause');
+    } else {
+        icon.classList.remove('fa-pause');
+        icon.classList.add('fa-play');
+    }
 }
 
 playButton.addEventListener('click', () => {
     playPause();
+
 })
 
 changeSlides();
