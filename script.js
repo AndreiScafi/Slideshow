@@ -43,6 +43,7 @@ const playPause = () => {
     }
 
     changePlayPause();
+    arrowsVisibility();
 }
 
 const changePlayPause = () => {
@@ -62,6 +63,18 @@ const changePlayPause = () => {
 playButton.addEventListener('click', () => {
     playPause();
 });
+
+const arrowsVisibility = () => {
+    const arrows = document.querySelectorAll('.control');
+
+    Array.from(arrows).forEach(arrow => {
+        if (!playPauseBool) {
+            arrow.classList.add('arrows-visibility');
+        } else {
+            arrow.classList.remove('arrows-visibility');
+        }
+    })
+}
 
 leftArrow.addEventListener('click', () => {
 
